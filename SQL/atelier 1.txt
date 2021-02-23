@@ -1,0 +1,21 @@
+/3: SELECT name FROM products;
+
+/4: SELECT name, price FROM products;
+
+/5: SELECT name FROM products WHERE Price <= 200;
+
+/6: SELECT * FROM products WHERE Price > 60 AND Price < 120 ;
+
+/7 :   SELECT Name, Price*100 as 'Price' FROM products
+
+/8 :   SELECT AVG(Price) FROM products
+
+/9 :    SELECT AVG(Price) FROM products WHERE Manufacturer='2'
+
+/10:   SELECT COUNT(*) FROM products WHERE Price>=180
+
+/11:   SELECT Name, Price FROM products WHERE Price>= 180 ORDER BY Price DESC, Name ASC
+
+/12 :  SELECT x.* , y.NAME FROM products x JOIN manufacturers y ON (x.Manufacturer = y.Code)
+
+/13:    select x.Name,x.Price , y.Name from Products x inner join Manufacturers y on x.Manufacturer=y.Code
