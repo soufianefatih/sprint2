@@ -1,0 +1,40 @@
+SELECT LastName FROM employees
+
+SELECT DISTINCT LastName FROM employees
+
+SELECT * FROM employees WHERE LastName = 'Smith'
+
+SELECT * FROM employees WHERE LastName = 'Smith' OR LastName = 'Doe'
+
+SELECT * FROM employees WHERE Department=14
+
+SELECT * FROM employees WHERE Department=37 OR Department=77
+
+SELECT * FROM employees WHERE LastName LIKE 'S%'
+
+SELECT Department, COUNT() FROM employees GROUP BY Department
+
+SELECT x. , y.* FROM employees x JOIN departments y on x.Department=y.Code
+
+SELECT x.Name , x.LastName, y.Name, y.Budget FROM employees x INNER JOIN departments y ON x.Department = y.Code
+
+SELECT lastname, Name FROM employees WHERE Department IN (SELECT Code FROM departments WHERE budget>60000)
+
+SELECT y.Name FROM departments y INNER JOIN employees x ON x.Department=y.Code GROUP BY x.Department HAVING COUNT(*) > 2
+
+WITH A AS (SELECT MIN(Budget) AS minimum
+FROM Departments), B AS (SELECT e.Name as Name,e.LastName AS LastName,d.Budget as Budget
+FROM employees as e
+LEFT JOIN departments AS d
+ON e.Department = d.code)
+SELECT B.Name,B.LastName,B.Budget 
+FROM A,B
+WHERE B.Budget>A.minimum
+ORDER BY 3
+LIMIT 2;
+
+INSERT INTO Departments
+  VALUES ( 11 , 'Quality Assurance' , 40000);
+
+INSERT INTO Employees
+  VALUES ( '847219811' , 'Mary' , 'Moore' , 11);
